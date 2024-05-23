@@ -5,32 +5,32 @@
  * @version 0.6.0
  */
 
-$.circleProgress = {
+ $.circleProgress = {
     // Default options (you may override them)
     defaults: {
         /**
          * This is the only required option. It should be from 0.0 to 1.0
          * @type {float}
          */
-        value: 0,
+         value: 0,
 
         /**
          * Size of the circle / canvas in pixels
          * @type {int}
          */
-        size: 100,
+         size: 100,
 
         /**
          * Initial angle for 0.0 value in radians
          * @type {float}
          */
-        startAngle: -Math.PI,
+         startAngle: -Math.PI,
 
         /**
          * Width of the arc. By default it's calculated as 1/14 of size, but you may set it explicitly in pixels
          * type {int|'auto'}
          */
-        thickness: 'auto',
+         thickness: 'auto',
 
         /**
          * Fill of the arc. You may set it to:
@@ -44,7 +44,7 @@ $.circleProgress = {
          *     - { image: 'http://i.imgur.com/pT0i89v.png' }
          *     - { color: 'lime', image: 'http://i.imgur.com/pT0i89v.png' } - color displayed until the image is loaded
          */
-        fill: {
+         fill: {
             gradient: ['#3aeabb', '#fdd250']
         },
 
@@ -52,12 +52,12 @@ $.circleProgress = {
          * Color of the "empty" arc. Only a color fill supported by now
          * @type {string}
          */
-        emptyFill: 'rgba(0, 0, 0, .1)',
+         emptyFill: 'rgba(0, 0, 0, .1)',
 
         /**
          * Animation config (see jQuery animations: http://api.jquery.com/animate/)
          */
-        animation: {
+         animation: {
             duration: 1200,
             easing: 'circleProgressEasing'
         }
@@ -89,7 +89,7 @@ $.easing.circleProgressEasing = function(x, t, b, c, d) {
  *                `animation` may be set to false;
  *                you may also use .circleProgress('widget') to get the canvas
  */
-$.fn.circleProgress = function(options) {
+ $.fn.circleProgress = function(options) {
     if (options == 'widget')
         return this.data('circle-progress');
 
@@ -97,13 +97,13 @@ $.fn.circleProgress = function(options) {
 
     return this.each(function() {
         var el = $(this),
-            size = options.size,
-            radius = size / 2,
-            thickness = size / 14,
-            value = options.value,
-            startAngle = options.startAngle,
-            emptyArcFill = options.emptyFill,
-            arcFill;
+        size = options.size,
+        radius = size / 2,
+        thickness = size / 14,
+        value = options.value,
+        startAngle = options.startAngle,
+        emptyArcFill = options.emptyFill,
+        arcFill;
 
         if ($.isNumeric(options.thickness))
             thickness = options.thickness;
@@ -194,11 +194,7 @@ $.fn.circleProgress = function(options) {
         function drawAnimated(v) {
             el.trigger('circle-animation-start');
 
-            $(canvas).css({
-                progress: 0
-            }).animate({
-                    progress: v
-                },
+            $(canvas).css({ progress: 0 }).animate({ progress: v },
                 $.extend({}, options.animation, {
                     step: function(p) {
                         draw(p);
@@ -209,7 +205,7 @@ $.fn.circleProgress = function(options) {
                         el.trigger('circle-animation-end');
                     }
                 })
-            );
+                );
         }
     });
 };
