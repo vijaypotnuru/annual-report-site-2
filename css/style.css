@@ -1626,6 +1626,9 @@ figure.dotted-bg {
   color: #ffffff; }
 
 .site-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 70px 0; }
   .site-footer a {
     color: #777;
